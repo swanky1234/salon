@@ -1,0 +1,107 @@
+# Luxe Salon – Changes & Setup Guide
+
+## ✅ What Was Fixed & Built
+
+### 1. Services Navigation (Layout)
+- **Centered nav** on desktop with logo on left, links in middle, auth on right
+- **Services dropdown** in the nav lists all 6 categories (Hair, Nails, Facials, Massage, Makeup, Waxing) — categories link to `/services?cat=hair` etc.
+- **Mobile**: hamburger menu with all nav links + service sub-categories + user section
+- **Profile avatar** in mobile header now correctly navigates to `/profile`
+- **`cursor: pointer`** on all clickable elements throughout
+
+### 2. Services Page (`/services`)
+- Filter tabs replaced with **centered pill buttons** — always visible, responsive on all screen sizes
+- Category-linked from nav dropdown (`?cat=` URL param syncs the active tab)
+- **18 services** now display (all listed in your request) via static fallback when DB is unavailable
+
+### 3. Booking Page (`/booking`)
+- **Inline calendar** — always visible (no hidden-behind-button), month navigation works
+- **Time slot grid** — clickable pill buttons instead of a Select dropdown (easier to tap on mobile)
+- **Services dropdown** features category filter tabs (All / Hair / Nails / etc.) for quick filtering
+- Selected services show as **removable badge pills**
+- Name & phone pre-fill from the logged-in user's profile
+- `cursor: pointer` on all interactive elements
+
+### 4. Admin Catalogue (`/admin/catalogue`)
+- **Fixed "click to type" bug** — `ServiceForm` is now a proper top-level component so React never remounts it during typing
+- **File input reset** — same image can be re-selected after upload
+- **Image thumbnails strip** — shows all uploaded images; the active one is highlighted with a pink ring + checkmark
+- **Photo count badge** on the table row (e.g. `3` badge = 3 images)
+- Category dropdown in the filter bar
+- **18 default services** seeded on first load
+
+### 5. Admin Stylists (`/admin/stylists`)
+- **Profile picture upload** — fixed (input resets so same file can be re-uploaded)
+- **Photo uploaded indicator** — green checkmark + remove (✕) button shown on uploaded profile photo
+- **Fallback avatar** always renders correctly even when image URL fails
+- Portfolio image grid with remove buttons
+- Upload progress state per upload type (profile vs portfolio)
+
+### 6. Admin Forgot Password (`/admin/forgot-password`)
+- ✅ Already fully working — linked from admin login page
+- Sends reset email via Supabase; success screen with "try again" option
+
+---
+
+## 🔵 Continue with Google — Setup Steps
+
+The code is already written. You just need to enable it in **Supabase**:
+
+**Step 1 – Go to your Supabase project**
+> https://app.supabase.com → Your Project → Authentication → Providers
+
+**Step 2 – Enable Google Provider**
+1. Find **Google** in the list and toggle it **ON**
+2. You'll need a **Client ID** and **Client Secret** from Google Cloud Console
+
+**Step 3 – Create Google OAuth credentials**
+1. Go to https://console.cloud.google.com
+2. Create a new project (or use existing)
+3. Go to **APIs & Services → Credentials**
+4. Click **Create Credentials → OAuth 2.0 Client ID**
+5. Application type: **Web application**
+6. Add Authorized redirect URI:
+   ```
+   https://vppntsrbpdnmdwkllfal.supabase.co/auth/v1/callback
+   ```
+7. Copy the **Client ID** and **Client Secret**
+
+**Step 4 – Paste into Supabase**
+- Paste Client ID and Client Secret into the Google provider settings in Supabase
+- Save
+
+**Step 5 – Add your site URL to Supabase**
+> Authentication → URL Configuration
+- **Site URL**: `http://localhost:5173` (for dev), your domain for production
+- **Redirect URLs**: Add `http://localhost:5173/`
+
+That's it — the "Continue with Google" button will work immediately.
+
+---
+
+## 🗄️ Fix Supabase Services Not Loading from DB
+
+Run **`supabase_rls_fix.sql`** in your Supabase SQL Editor:
+> https://app.supabase.com → SQL Editor → Paste file contents → Run
+
+This will:
+- Enable public **SELECT** on `services`, `stylists`, `holidays`, `availability`, `settings`
+- Enable authenticated access to `bookings` and `favorites`
+- **Seed the 18 default services** if the table is empty
+
+> [!NOTE]
+> Even without running this SQL, the app works using the **static fallback** — all 18 services appear on the website. The SQL just ensures the admin panel's services sync to the public site.
+
+---
+
+## 🖼️ Image Upload — Supabase Storage Buckets Required
+
+For image uploads to work, ensure these **storage buckets** exist in Supabase:
+> Storage → Create new bucket
+
+| Bucket name | Public |
+|---|---|
+| `service-images` | ✅ Yes |
+| `stylist-images` | ✅ Yes |
+
+Both need to be **public** so uploaded images display correctly.

@@ -1,0 +1,115 @@
+add forgot password for the admin. what to do for continue with google. also upload section is having issues with upload and when i type i have to click to type. also the images should show which one is uploaded. also the profile on the icon is not clicking and showing profile page. also in the stylist part the profile picture is not showing/uploadin fix any image related upload issues in the whole project. also the services nav should be centered and responsive. it looks broken in mobile view. also the date picker is not bringing a calendar. make it show a calendar. add these as some of the services Our Services
+
+Explore our comprehensive range of beauty and wellness services
+Classic Haircut
+Classic Haircut
+$45
+
+Professional haircut with styling
+
+Duration: 45 min
+Hair Coloring
+Hair Coloring
+$120
+
+Full hair coloring service with premium products
+
+Duration: 2 hours
+Balayage Highlights
+Balayage Highlights
+$180
+
+Natural-looking highlights with expert technique
+
+Duration: 3 hours
+Keratin Treatment
+Keratin Treatment
+$250
+
+Smoothing treatment for frizz-free hair
+
+Duration: 3-4 hours
+Classic Manicure
+Classic Manicure
+$35
+
+Traditional manicure with polish of your choice
+
+Duration: 45 min
+Gel Manicure
+Gel Manicure
+$55
+
+Long-lasting gel polish manicure
+
+Duration: 1 hour
+Spa Pedicure
+Spa Pedicure
+$65
+
+Luxurious pedicure with massage and moisturizing treatment
+
+Duration: 1.5 hours
+Acrylic Nails
+Acrylic Nails
+$75
+
+Full set of acrylic nails with your choice of design
+
+Duration: 1.5 hours
+Deep Cleansing Facial
+Deep Cleansing Facial
+$85
+
+Purifying facial for all skin types
+
+Duration: 1 hour
+Anti-Aging Facial
+Anti-Aging Facial
+$110
+
+Advanced facial targeting fine lines and wrinkles
+
+Duration: 1.5 hours
+Hydrating Facial
+Hydrating Facial
+$95
+
+Moisture-restoring treatment for dry skin
+
+Duration: 1 hour
+Swedish Massage
+Swedish Massage
+$90
+
+Relaxing full-body massage
+
+Duration: 1 hour
+Deep Tissue Massage
+Deep Tissue Massage
+$105
+
+Therapeutic massage for muscle tension
+
+Duration: 1 hour
+Hot Stone Massage
+Hot Stone Massage
+$120
+
+Relaxing massage with heated stones
+
+Duration: 1.5 hours
+Bridal Makeup
+Bridal Makeup
+$150
+
+Professional bridal makeup application
+
+Duration: 2 hours
+Evening Makeup
+Evening Makeup
+$80
+
+Glamorous makeup for special occasions
+
+Duration: 1 hour also the services drop down should list some of them and also in the admin you can add the drop down for categories. add password visibility toggles for buttons you should use cursor pointer when hovering over them. make sure it is responsive. under book appointment add a drop down of services and also the calender should show properly under book an appointment. remember the "our services" bar that shows the services should be centered
